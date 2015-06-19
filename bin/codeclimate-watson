@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+def parse_engine_config(raw)
+  raw ? JSON.parse(raw) : {}
+end
+
+engine_config = parse_engine_config(ENV['ENGINE_CONFIG'])
+Dir.chdir("/code")
+cmd = "ember-watson"
+if exclude_paths = engine_config['exclude_paths']
+  exclude_paths.each do |path|
+    cmd << " -e #{path}"
+  end
+end
+cmd << " -d all '.'"
+result = `#{cmd}`
+print result
