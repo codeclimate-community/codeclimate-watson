@@ -9,4 +9,7 @@ RUN npm install -g mrb/ember-watson.git#95387b7
 
 COPY . /usr/src/app
 
+RUN adduser -u 9000 -D app
+USER app
+
 CMD ["/usr/src/app/bin/codeclimate-watson"]
