@@ -2,11 +2,12 @@
 
 require 'json'
 
-def parse_engine_config(raw)
-  raw ? JSON.parse(raw) : {}
+if File.exists?("/config.json")
+  engine_config = JSON.parse(File.read("/config.json"))
+else
+  engine_config = {}
 end
 
-engine_config = parse_engine_config(ENV['ENGINE_CONFIG'])
 Dir.chdir("/code")
 cmd = "ember-watson"
 if exclude_paths = engine_config['exclude_paths']
