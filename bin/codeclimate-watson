@@ -15,7 +15,7 @@ if exclude_paths = engine_config['exclude_paths']
     cmd << " -e #{path}"
   end
 end
-cmd << " -d all '.'"
+cmd << " all '.' --dry-run"
 result = `#{cmd}`
 print result
 exit $?.exitstatus
