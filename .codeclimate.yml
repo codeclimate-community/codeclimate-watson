@@ -3,4 +3,4 @@ engines:
     enabled: true
 ratings:
   paths:
-  - bin/codeclimate-watson
+  - bin/ember-watson
