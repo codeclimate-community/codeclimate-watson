@@ -18,3 +18,4 @@ end
 cmd << " -d all '.'"
 result = `#{cmd}`
 print result
+exit $?.exitstatus

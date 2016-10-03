@@ -6,20 +6,32 @@ machine:
     image_name: codeclimate-watson
 
 dependencies:
-  pre:
-    - echo $gcloud_json_key_base64 | sed 's/ //g' | base64 -d > /tmp/gcloud_key.json
-    - curl https://sdk.cloud.google.com | bash
-    - gcloud auth activate-service-account $gcloud_account_email --key-file /tmp/gcloud_key.json
-    - gcloud docker -a
+  override:
+    - >
+      docker run
+      --env CIRCLE_BRANCH
+      --env CIRCLE_PROJECT_REPONAME
+      --env CIRCLE_TOKEN
+      --env GCR_JSON_KEY
+      --volume /var/run/docker.sock:/var/run/docker.sock
+      codeclimate/patrick pull || true
 
 test:
   override:
-    - docker build -t=$registry_root/$image_name:b$CIRCLE_BUILD_NUM .
+    - docker build -t=codeclimate/$image_name:b$CIRCLE_BUILD_NUM .
 
 deployment:
   registry:
     branch: master
     commands:
-      - docker push $registry_root/$image_name:b$CIRCLE_BUILD_NUM
+      - >
+        docker run
+        --env CIRCLE_BUILD_NUM
+        --env CIRCLE_PROJECT_REPONAME
+        --env GCR_JSON_KEY
+        --volume /var/run/docker.sock:/var/run/docker.sock
+        codeclimate/patrick push gcr
 
-
+notify:
+  webhooks:
+    - url: https://cc-slack-proxy.herokuapp.com/circle
