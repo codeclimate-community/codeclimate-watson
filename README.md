@@ -2,6 +2,15 @@
 
 `codeclimate-watson` is a Code Climate engine that wraps [ember-watson](https://github.com/abuiles/ember-watson). You can run it on your command line using the Code Climate CLI, or on our hosted analysis platform.
 
+## Maintainers Wanted
+
+This engine has unfortunately fallen behind both `ember-watson` & Code
+Climate's [spec](https://github.com/codeclimate/spec). Our team does not use
+Ember, and hasn't had time to keep up on this engine. If you're interested in
+helping modernize & maintain this engine, please [comment on the related
+issue](https://github.com/codeclimate-community/codeclimate-watson/issues/10)
+or get in touch with us at hello@codeclimate.com!
+
 ### Installation & Usage
 
 1. If you haven't already, [install the Code Climate CLI](https://github.com/codeclimate/codeclimate).
