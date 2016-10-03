@@ -2,7 +2,6 @@ machine:
   services:
     - docker
   environment:
-    CLOUDSDK_CORE_DISABLE_PROMPTS: 1
     image_name: codeclimate-watson
 
 dependencies:
@@ -18,7 +17,7 @@ dependencies:
 
 test:
   override:
-    - docker build -t=codeclimate/$image_name:b$CIRCLE_BUILD_NUM .
+    - docker build -t=codeclimate/$image_name .
 
 deployment:
   registry:
