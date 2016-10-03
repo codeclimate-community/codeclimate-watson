@@ -22,4 +22,6 @@ deployment:
     commands:
       - docker push $registry_root/$image_name:b$CIRCLE_BUILD_NUM
 
-
+notify:
+  webhooks:
+    - url: https://cc-slack-proxy.herokuapp.com/circle
