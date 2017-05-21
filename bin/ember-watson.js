@@ -139,10 +139,10 @@ formulae.forEach(function (formula) {
 
   var locations = [];
   console.log = function (location) {
-    var file = fs.readFileSync(location.path).toString();
+    var file = fs.readFileSync(location.filename).toString();
     var lines = file.split('\n');
     locations.push({
-      path: location.path,
+      path: location.filename,
       positions: {
         begin: {
           line: 0,
@@ -172,10 +172,13 @@ formulae.forEach(function (formula) {
   console.log = console._log;
 
   locations.forEach(function (location) {
-    console.log(JSON.stringify({
+    process.stdout.write(JSON.stringify({
       type: 'issue',
-      check_name: formula.name,
-      description: formula.description,
+      check_name: formula.command,
+      description: formula.name,
+      content: {
+        body: formula.description
+      },
       categories: ['Compatibility'],
       location: location
     }) + '\0');
