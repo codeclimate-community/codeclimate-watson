@@ -8,6 +8,6 @@
     "url": "http://github.com/codeclimate-community/codeclimate-watson.git"
   },
   "dependencies": {
-    "ember-watson": "abuiles/ember-watson#a833d1c02e166611f8ce285ba5b0aee82e7ce64d"
+    "ember-watson": "^0.8.1"
   }
 }
