@@ -1,0 +1,11 @@
+{
+  "name": "codeclimate-watson",
+  "description": "Ember",
+  "maintainer": {
+    "name": "Tim Evans",
+    "email": "tim.c.evans@me.com"
+  },
+  "languages": ["JavaScript"],
+  "version": "401543",
+  "spec_version": "0.0.1"
+}
