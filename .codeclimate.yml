@@ -1,5 +1,5 @@
 engines:
-  watson:
+  eslint:
     enabled: true
 ratings:
   paths:
