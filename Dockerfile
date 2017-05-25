@@ -22,4 +22,4 @@ USER app
 WORKDIR /code
 VOLUME /code
 
-CMD ["/usr/src/app/bin/ember-watson.js"]
+CMD ["/usr/src/app/bin/ember-watson"]
